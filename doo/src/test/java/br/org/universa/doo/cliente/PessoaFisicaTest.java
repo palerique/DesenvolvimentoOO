@@ -1,4 +1,4 @@
-package br.org.universa.doo;
+package br.org.universa.doo.cliente;
 
 import static org.junit.Assert.assertEquals;
 
@@ -11,7 +11,6 @@ import org.junit.Test;
 
 import br.org.universa.doo.cartao.Cartao;
 import br.org.universa.doo.cartao.Trilha;
-import br.org.universa.doo.cliente.PessoaFisica;
 import br.org.universa.doo.conta.Conta;
 import br.org.universa.doo.conta.ContaCorrente;
 

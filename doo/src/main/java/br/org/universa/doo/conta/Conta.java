@@ -4,27 +4,28 @@ import br.org.universa.doo.cliente.Cliente;
 
 /**
  * 
- * Desenvolvimento Orientado a Objetos - Professor Flávio Roberto - professor.flavio.roberto@gmail.com
+ * Desenvolvimento Orientado a Objetos - Professor Flávio Roberto -
+ * professor.flavio.roberto@gmail.com
  * 
  * @author Bruno Dantas - brunobdantas@gmail.com
  * @author PH - palerique@gmail.com
  */
 public abstract class Conta {
 
-	private int				numeroDaConta;
-	protected double		saldo;
-	private TipoDaConta		tipoDaConta;
-	private EstadoDaConta	estadoDaConta;
-	private Cliente			titular;
+	private int numeroDaConta;
+	protected double saldo;
+	private TipoDaConta tipoDaConta;
+	private EstadoDaConta estadoDaConta;
+	private Cliente titular;
 
 	public void credita(double valor) {
 
 		saldo += valor;
 	}
 
-	public abstract void debitar(double valor);
+	public abstract void debitar(double valor) throws Exception;
 
-	public void transfere(double valor, Conta contaDestino) {
+	public void transfere(double valor, Conta contaDestino) throws Exception {
 
 		this.debitar(valor);
 		contaDestino.credita(valor);
