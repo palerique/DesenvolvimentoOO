@@ -22,7 +22,7 @@ public class ContaCorrente extends Conta {
 	public void debitar(double valor) throws Exception {
 
 		if (super.saldo < (valor + 1.20))
-			throw new Exception("Saldo Insuficiente");
+			throw new Exception("Conta com saldo insuficiente");
 
 		super.saldo -= valor + TARIFICAO_DE_DEBITO;
 	}

@@ -42,7 +42,18 @@ public class ContaCorrenteTest {
 	}
 
 	@Test
-	public void contaDeveFunionarOCredito() throws Exception {
+	public void aMensagemDaExcecaoDeveSerContaComSaldoInsuficiente() {
+
+		try {
+			conta.debitar(1005.00);
+		} catch (Exception e) {
+			assertEquals("Conta com saldo insuficiente", e.getMessage());
+		}
+
+	}
+
+	@Test
+	public void contaDeveFuncionarOCredito() throws Exception {
 
 		conta.credita(0.80);
 
