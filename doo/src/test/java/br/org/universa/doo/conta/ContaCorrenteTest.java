@@ -61,4 +61,12 @@ public class ContaCorrenteTest {
 				0.000001);
 
 	}
+	
+	@Test(expected = Exception.class)
+	public void contaComSaldoNaoPodeEncerrar() throws Exception {
+
+		conta.encerra();
+
+	}
+
 }
