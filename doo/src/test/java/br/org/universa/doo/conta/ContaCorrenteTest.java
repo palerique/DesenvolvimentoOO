@@ -60,13 +60,6 @@ public class ContaCorrenteTest {
 				0.000001);
 
 	}
-	
-	@Test(expected = Exception.class)
-	public void contaComSaldoNaoPodeEncerrar() throws Exception {
-
-		conta.encerra();
-
-	}
 
 	@Test
 	public void deveFuncionarTransferenciasEntreContas() throws Exception {
@@ -79,6 +72,60 @@ public class ContaCorrenteTest {
 				conta.getSaldo(), 0.000001);
 		assertEquals("Deve ter transferido o valor para a outra conta", 1.2,
 				b.getSaldo(), 0.000001);
+
+	}
+
+	@Test
+	public void contaComSaldoNaoPodeEncerrarMensagem() {
+
+		try {
+			conta.encerra();
+		} catch (Exception e) {
+			assertEquals("Saldo diferente de zero", e.getMessage());
+		}
+
+	}
+
+	@Test
+	public void contaComEstadoDiferenteDeAtivoNaoPodeEncerrarMensagem() {
+
+		try {
+			conta.debitar(1000.00);
+			conta.setEstadoDaConta(EstadoDaConta.ENCERRADA);
+
+			conta.encerra();
+		} catch (Exception e) {
+			assertEquals("Essa Conta Não Está Ativa", e.getMessage());
+		}
+
+	}
+
+	@Test(expected = Exception.class)
+	public void contaComSaldoNaoPodeEncerrar() throws Exception {
+
+		conta.encerra();
+
+	}
+
+	@Test(expected = Exception.class)
+	public void contaComEstadoDiferenteDeAtivoNaoPodeEncerrar()
+			throws Exception {
+
+		conta.setEstadoDaConta(EstadoDaConta.ENCERRADA);
+
+		conta.encerra();
+
+	}
+
+	@Test
+	public void contaDeveEncerrar() throws Exception {
+
+		conta.setEstadoDaConta(EstadoDaConta.ATIVA);
+		conta.debitar(1000.00);
+
+		conta.encerra();
+
+		assertEquals(EstadoDaConta.ENCERRADA, conta.getEstadoDaConta());
 
 	}
 }

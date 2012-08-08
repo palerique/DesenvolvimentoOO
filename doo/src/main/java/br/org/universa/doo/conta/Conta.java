@@ -31,7 +31,12 @@ public abstract class Conta {
 		contaDestino.credita(valor);
 	}
 
-	public void encerra() {
+	public void encerra() throws Exception {
+
+		if (this.saldo != 0)
+			throw new Exception("Saldo diferente de zero");
+		if (!this.estadoDaConta.equals(EstadoDaConta.ATIVA))
+			throw new Exception("Essa Conta Não Está Ativa");
 
 		setEstadoDaConta(EstadoDaConta.ENCERRADA);
 	}
