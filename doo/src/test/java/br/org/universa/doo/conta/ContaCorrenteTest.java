@@ -6,7 +6,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * 
  * Desenvolvimento Orientado a Objetos - Professor Flávio Roberto -
  * professor.flavio.roberto@gmail.com
  * 
@@ -59,6 +58,20 @@ public class ContaCorrenteTest {
 
 		assertEquals("O crédito deve funcionar", 1002.00, conta.getSaldo(),
 				0.000001);
+
+	}
+
+	@Test
+	public void deveFuncionarTransferenciasEntreContas() throws Exception {
+
+		Conta b = new ContaCorrente();
+
+		conta.transfere(1.20, b);
+
+		assertEquals("Deve transferir os valores e cobrar a tarifa", 998.8,
+				conta.getSaldo(), 0.000001);
+		assertEquals("Deve ter transferido o valor para a outra conta", 1.2,
+				b.getSaldo(), 0.000001);
 
 	}
 }
