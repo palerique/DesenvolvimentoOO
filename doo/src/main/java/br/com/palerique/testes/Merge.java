@@ -1,5 +1,5 @@
 package br.com.palerique.testes;
 
-public class TesteGit2 {
+public class Merge {
 
 }
